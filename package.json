@@ -1,0 +1,34 @@
+{
+  "name": "dev_landing-event-fe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anhduyBA/Dev_landing-event-FE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anhduyBA/Dev_landing-event-FE/issues"
+  },
+  "homepage": "https://github.com/anhduyBA/Dev_landing-event-FE#readme",
+  "dependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "antd": "^6.2.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-router-dom": "^7.12.0",
+    "vite": "^7.3.1"
+  },
+  "devDependencies": {
+    "sass": "^1.97.2"
+  }
+}
