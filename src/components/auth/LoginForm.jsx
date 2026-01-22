@@ -1,80 +1,134 @@
-import React, { useState } from 'react'
-import { Input, Button, Tabs, Divider } from 'antd'
-import { UserOutlined, LockOutlined, GoogleOutlined, FacebookOutlined, GithubOutlined } from '@ant-design/icons'
+import React, { useState } from "react";
+import { Input, Button, Divider, Form } from "antd";
+import {
+  MailOutlined,
+  LockOutlined,
+  UserOutlined,
+  BankOutlined,
+  GoogleOutlined,
+  FacebookFilled,
+  GithubOutlined,
+} from "@ant-design/icons";
 
 const LoginForm = () => {
-  const [activeTab, setActiveTab] = useState('personal')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [form] = Form.useForm();
+  const [userType, setUserType] = useState("personal"); // 'personal' | 'business'
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = () => {
-    console.log('Login attempt:', { email, password, type: activeTab })
-  }
+  const handleLogin = async (values) => {
+    setLoading(true);
+    try {
+      console.log("Login attempt:", { ...values, type: userType });
+      // TODO: Call API login here
+    } catch (error) {
+      console.error("Login error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSocialLogin = (provider) => {
-    console.log('Social login:', provider)
-  }
+    console.log("Social login:", provider);
+  };
 
-  const tabItems = [
-    {
-      key: 'personal',
-      label: 'Cá nhân',
-    },
-    {
-      key: 'business',
-      label: 'Doanh nghiệp',
-    },
-  ]
+  const isPersonal = userType === "personal";
+
+  // Validation rules
+  const emailRules = [
+    { required: true, message: "Vui lòng nhập email!" },
+    { type: "email", message: "Email không hợp lệ!" },
+  ];
+
+  const passwordRules = [
+    { required: true, message: "Vui lòng nhập mật khẩu!" },
+    { min: 6, message: "Mật khẩu phải có ít nhất 6 ký tự!" },
+  ];
 
   return (
     <div className="login-form">
       <div className="form-header">
         <h1 className="form-title">Đăng nhập</h1>
-        <p className="form-subtitle">Truy cập vào tài khoản TemplateStation của bạn</p>
+        <p className="form-subtitle">
+          Truy cập vào tài khoản TemplateStation của bạn.
+        </p>
       </div>
 
-      <Tabs
-        activeKey={activeTab}
-        onChange={setActiveTab}
-        items={tabItems}
-        className="login-tabs"
-      />
+      {/* User Type Toggle */}
+      <div className="user-type-toggle">
+        <button
+          type="button"
+          className={`toggle-btn ${isPersonal ? "active" : ""}`}
+          onClick={() => setUserType("personal")}
+        >
+          <UserOutlined className="toggle-icon" />
+          <span>Cá nhân</span>
+        </button>
+        <button
+          type="button"
+          className={`toggle-btn ${!isPersonal ? "active" : ""}`}
+          onClick={() => setUserType("business")}
+        >
+          <BankOutlined className="toggle-icon" />
+          <span>Doanh nghiệp</span>
+        </button>
+      </div>
 
-      <div className="form-content">
-        <div className="input-group">
+      <Form
+        form={form}
+        onFinish={handleLogin}
+        className="form-content"
+        layout="vertical"
+        requiredMark={false}
+      >
+        <Form.Item
+          name="email"
+          label={
+            <span className="input-label">
+              {isPersonal ? "Địa chỉ Email" : "Email doanh nghiệp"}
+            </span>
+          }
+          rules={emailRules}
+        >
           <Input
             size="large"
-            placeholder="Địa chỉ Email"
-            prefix={<UserOutlined />}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            placeholder={
+              isPersonal ? "alex@example.com" : "contact@company.com"
+            }
+            prefix={<MailOutlined className="input-icon" />}
             className="form-input"
           />
-        </div>
+        </Form.Item>
 
-        <div className="input-group">
+        <Form.Item
+          name="password"
+          label={<span className="input-label">Mật khẩu</span>}
+          rules={passwordRules}
+        >
           <Input.Password
             size="large"
-            placeholder="Mật khẩu"
-            prefix={<LockOutlined />}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            placeholder="••••••••"
+            prefix={<LockOutlined className="input-icon" />}
             className="form-input"
           />
-        </div>
+        </Form.Item>
 
-        <Button
-          type="primary"
-          size="large"
-          block
-          onClick={handleLogin}
-          className="login-button"
-        >
-          Đăng nhập →
-        </Button>
+        <Form.Item>
+          <Button
+            type="primary"
+            size="large"
+            block
+            htmlType="submit"
+            loading={loading}
+            className="login-button"
+          >
+            Đăng nhập <span className="arrow">→</span>
+          </Button>
+        </Form.Item>
 
         <div className="forgot-password">
-          <a href="#" className="forgot-link">Quên mật khẩu?</a>
+          <a href="#" className="forgot-link">
+            QUÊN MẬT KHẨU ?
+          </a>
         </div>
 
         <Divider className="divider">
@@ -82,30 +136,41 @@ const LoginForm = () => {
         </Divider>
 
         <div className="social-login">
-          <Button
-            icon={<GoogleOutlined />}
-            className="social-button google"
-            onClick={() => handleSocialLogin('google')}
-          />
-          <Button
-            icon={<FacebookOutlined />}
-            className="social-button facebook"
-            onClick={() => handleSocialLogin('facebook')}
-          />
-          <Button
-            icon={<GithubOutlined />}
-            className="social-button github"
-            onClick={() => handleSocialLogin('github')}
-          />
+          <button
+            type="button"
+            className="social-button"
+            onClick={() => handleSocialLogin("google")}
+            aria-label="Login with Google"
+          >
+            <GoogleOutlined className="social-icon" />
+          </button>
+          <button
+            type="button"
+            className="social-button"
+            onClick={() => handleSocialLogin("facebook")}
+            aria-label="Login with Facebook"
+          >
+            <FacebookFilled className="social-icon facebook" />
+          </button>
+          <button
+            type="button"
+            className="social-button"
+            onClick={() => handleSocialLogin("github")}
+            aria-label="Login with GitHub"
+          >
+            <GithubOutlined className="social-icon" />
+          </button>
         </div>
 
         <div className="signup-link">
           <span>Chưa có tài khoản? </span>
-          <a href="/register" className="signup-text">Đăng ký ngay</a>
+          <a href="/register" className="signup-text">
+            Đăng ký ngay
+          </a>
         </div>
-      </div>
+      </Form>
     </div>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;
