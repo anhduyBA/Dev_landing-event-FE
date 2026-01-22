@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Input, Button, Checkbox, Form, Row, Col } from "antd";
+import { Input, Button, Checkbox, Form } from "antd";
 import {
   UserOutlined,
   MailOutlined,
@@ -194,37 +194,33 @@ const RegisterForm = () => {
           />
         </Form.Item>
 
-        {/* Password Row */}
-        <Row gutter={16}>
-          <Col xs={24} sm={12}>
-            <Form.Item
-              name="password"
-              label={<span className="input-label-upper">MẬT KHẨU</span>}
-              rules={passwordRules}
-            >
-              <Input.Password
-                size="large"
-                placeholder="••••••••"
-                prefix={<LockOutlined className="input-icon" />}
-                className="form-input"
-              />
-            </Form.Item>
-          </Col>
-          <Col xs={24} sm={12}>
-            <Form.Item
-              name="confirmPassword"
-              label={<span className="input-label-upper">XÁC NHẬN</span>}
-              rules={confirmPasswordRules}
-            >
-              <Input.Password
-                size="large"
-                placeholder="••••••••"
-                prefix={<LockOutlined className="input-icon" />}
-                className="form-input"
-              />
-            </Form.Item>
-          </Col>
-        </Row>
+        {/* Password */}
+        <Form.Item
+          name="password"
+          label={<span className="input-label-upper">MẬT KHẨU</span>}
+          rules={passwordRules}
+        >
+          <Input.Password
+            size="large"
+            placeholder="••••••••"
+            prefix={<LockOutlined className="input-icon" />}
+            className="form-input"
+          />
+        </Form.Item>
+
+        {/* Confirm Password */}
+        <Form.Item
+          name="confirmPassword"
+          label={<span className="input-label-upper">XÁC NHẬN MẬT KHẨU</span>}
+          rules={confirmPasswordRules}
+        >
+          <Input.Password
+            size="large"
+            placeholder="••••••••"
+            prefix={<LockOutlined className="input-icon" />}
+            className="form-input"
+          />
+        </Form.Item>
 
         {/* Agreement Checkbox */}
         <Form.Item
