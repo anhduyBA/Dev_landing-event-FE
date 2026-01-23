@@ -1,200 +1,275 @@
-// File: src/components/auth/RegisterForm.jsx
-import React, { useState } from 'react'
-import { Input, Button, Checkbox, Divider, Tabs, message } from 'antd'
-import { 
-  UserOutlined, 
-  MailOutlined, 
-  LockOutlined, 
-  GoogleOutlined, 
-  FacebookOutlined, 
-  GithubOutlined,
-  BankOutlined // <-- Import thêm icon ngân hàng/công ty
-} from '@ant-design/icons'
-import { Link } from 'react-router-dom'
+import React, { useState } from "react";
+import { Input, Button, Checkbox, Form } from "antd";
+import {
+  UserOutlined,
+  MailOutlined,
+  LockOutlined,
+  BankOutlined,
+  FileTextOutlined,
+} from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const RegisterForm = () => {
-  const [activeTab, setActiveTab] = useState('personal') // Mặc định là 'Cá nhân'
-  const [loading, setLoading] = useState(false)
-  
-  // State lưu dữ liệu form
-  const [formData, setFormData] = useState({
-    fullName: '',
-    companyName: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    agreement: false
-  })
+  const [form] = Form.useForm();
+  const [userType, setUserType] = useState("personal"); // 'personal' | 'business'
+  const [loading, setLoading] = useState(false);
 
-  // Cấu hình 2 Tab giống trang Login
-  const tabItems = [
+  const isPersonal = userType === "personal";
+
+  const handleRegister = async (values) => {
+    setLoading(true);
+    try {
+      console.log("Register data:", { ...values, accountType: userType });
+      // TODO: Call API register here
+    } catch (error) {
+      console.error("Register error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Reset form when switching user type
+  const handleUserTypeChange = (type) => {
+    setUserType(type);
+    form.resetFields();
+  };
+
+  // Validation rules
+  const nameRules = [
     {
-      key: 'personal',
-      label: 'Cá nhân',
+      required: true,
+      message: isPersonal
+        ? "Vui lòng nhập họ và tên!"
+        : "Vui lòng nhập tên người đại diện!",
     },
+  ];
+
+  const companyNameRules = [
+    { required: true, message: "Vui lòng nhập tên công ty!" },
+  ];
+
+  const taxCodeRules = [
+    { required: true, message: "Vui lòng nhập mã số thuế!" },
+    { pattern: /^[0-9]{10,13}$/, message: "Mã số thuế phải có 10-13 chữ số!" },
+  ];
+
+  const emailRules = [
+    { required: true, message: "Vui lòng nhập email!" },
+    { type: "email", message: "Email không hợp lệ!" },
+  ];
+
+  const passwordRules = [
+    { required: true, message: "Vui lòng nhập mật khẩu!" },
+    { min: 6, message: "Mật khẩu phải có ít nhất 6 ký tự!" },
+  ];
+
+  const confirmPasswordRules = [
+    { required: true, message: "Vui lòng xác nhận mật khẩu!" },
+    ({ getFieldValue }) => ({
+      validator(_, value) {
+        if (!value || getFieldValue("password") === value) {
+          return Promise.resolve();
+        }
+        return Promise.reject(new Error("Mật khẩu xác nhận không khớp!"));
+      },
+    }),
+  ];
+
+  const agreementRules = [
     {
-      key: 'business',
-      label: 'Doanh nghiệp',
+      validator: (_, value) =>
+        value
+          ? Promise.resolve()
+          : Promise.reject(new Error("Bạn cần đồng ý với điều khoản dịch vụ!")),
     },
-  ]
-
-  const handleChange = (e) => {
-    // Xử lý lấy dữ liệu khi người dùng gõ phím hoặc tick checkbox
-    const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value
-    setFormData({ ...formData, [e.target.name]: value })
-  }
-
-  const handleRegister = () => {
-    // 1. Kiểm tra các trường chung (Email, Password)
-    if (!formData.email || !formData.password) {
-      return message.error('Vui lòng điền đầy đủ Email và Mật khẩu!')
-    }
-    
-    // 2. Kiểm tra riêng từng Tab
-    if (activeTab === 'personal') {
-       if (!formData.fullName) return message.error('Vui lòng nhập Họ và tên!')
-    } 
-    else if (activeTab === 'business') {
-       if (!formData.companyName) return message.error('Vui lòng nhập Tên công ty!')
-       if (!formData.fullName) return message.error('Vui lòng nhập tên Người đại diện!')
-    }
-
-    // 3. Kiểm tra mật khẩu khớp nhau
-    if (formData.password !== formData.confirmPassword) {
-      return message.error('Mật khẩu nhập lại không khớp!')
-    }
-    
-    // 4. Kiểm tra checkbox điều khoản
-    if (!formData.agreement) {
-      return message.warning('Bạn cần đồng ý với điều khoản sử dụng!')
-    }
-
-    setLoading(true)
-    
-    // Giả lập gửi dữ liệu đi (Sau này bạn sẽ thay bằng gọi API thật)
-    setTimeout(() => {
-      console.log('Dữ liệu gửi đi:', { 
-        ...formData, 
-        accountType: activeTab // Gửi thêm loại tài khoản (personal/business)
-      })
-      message.success(`Đăng ký tài khoản ${activeTab === 'personal' ? 'Cá nhân' : 'Doanh nghiệp'} thành công!`)
-      setLoading(false)
-    }, 1500)
-  }
+  ];
 
   return (
-    <div className="login-form">
+    <div className="login-form register-form">
       <div className="form-header">
-        <h1 className="form-title">Đăng ký tài khoản</h1>
-        <p className="form-subtitle">Tham gia cộng đồng TemplateStation ngay hôm nay</p>
+        <h1 className="form-title">Tạo tài khoản</h1>
+        <p className="form-subtitle">
+          Gia nhập cộng đồng sáng tạo và chuyên nghiệp.
+        </p>
       </div>
 
-      {/* --- PHẦN TABS CHUYỂN ĐỔI --- */}
-      <Tabs
-        activeKey={activeTab}
-        onChange={setActiveTab} // Khi bấm tab, cập nhật state activeTab
-        items={tabItems}
-        className="login-tabs"
-      />
+      {/* User Type Toggle */}
+      <div className="user-type-toggle">
+        <button
+          type="button"
+          className={`toggle-btn ${isPersonal ? "active" : ""}`}
+          onClick={() => handleUserTypeChange("personal")}
+        >
+          <UserOutlined className="toggle-icon" />
+          <span>Cá nhân</span>
+        </button>
+        <button
+          type="button"
+          className={`toggle-btn ${!isPersonal ? "active" : ""}`}
+          onClick={() => handleUserTypeChange("business")}
+        >
+          <BankOutlined className="toggle-icon" />
+          <span>Doanh nghiệp</span>
+        </button>
+      </div>
 
-      <div className="form-content">
-        
-        {/* --- LOGIC HIỂN THỊ CÁC TRƯỜNG --- */}
-        
-        {/* Chỉ hiện ô "Tên công ty" khi đang ở Tab Doanh nghiệp */}
-        {activeTab === 'business' && (
-          <div className="input-group">
+      <Form
+        form={form}
+        onFinish={handleRegister}
+        className="form-content"
+        layout="vertical"
+        requiredMark={false}
+      >
+        {/* Personal: Họ và tên */}
+        {isPersonal && (
+          <Form.Item
+            name="fullName"
+            label={<span className="input-label-upper">HỌ VÀ TÊN</span>}
+            rules={nameRules}
+          >
             <Input
               size="large"
-              placeholder="Tên công ty / Tổ chức"
-              prefix={<BankOutlined />}
-              name="companyName"
+              placeholder="Nguyễn Văn A"
+              prefix={<UserOutlined className="input-icon" />}
               className="form-input"
-              onChange={handleChange}
             />
-          </div>
+          </Form.Item>
         )}
 
-        {/* Ô Họ tên (Đổi placeholder tùy theo Tab) */}
-        <div className="input-group">
-          <Input
-            size="large"
-            placeholder={activeTab === 'personal' ? "Họ và tên" : "Người đại diện"} 
-            prefix={<UserOutlined />}
-            name="fullName"
-            className="form-input"
-            onChange={handleChange}
-          />
-        </div>
+        {/* Business: Người đại diện */}
+        {!isPersonal && (
+          <>
+            <Form.Item
+              name="representativeName"
+              label={<span className="input-label-upper">NGƯỜI ĐẠI DIỆN</span>}
+              rules={nameRules}
+            >
+              <Input
+                size="large"
+                placeholder="Trần Văn A"
+                prefix={<UserOutlined className="input-icon" />}
+                className="form-input"
+              />
+            </Form.Item>
 
-        {/* Các trường chung (Email, Pass) */}
-        <div className="input-group">
-          <Input
-            size="large"
-            placeholder="Địa chỉ Email"
-            prefix={<MailOutlined />}
-            name="email"
-            className="form-input"
-            onChange={handleChange}
-          />
-        </div>
+            <Form.Item
+              name="companyName"
+              label={<span className="input-label-upper">TÊN CÔNG TY</span>}
+              rules={companyNameRules}
+            >
+              <Input
+                size="large"
+                placeholder="Công ty TNHH Giải pháp Công nghệ"
+                prefix={<BankOutlined className="input-icon" />}
+                className="form-input"
+              />
+            </Form.Item>
 
-        <div className="input-group">
-          <Input.Password
-            size="large"
-            placeholder="Mật khẩu"
-            prefix={<LockOutlined />}
-            name="password"
-            className="form-input"
-            onChange={handleChange}
-          />
-        </div>
+            <Form.Item
+              name="taxCode"
+              label={<span className="input-label-upper">MÃ SỐ THUẾ</span>}
+              rules={taxCodeRules}
+            >
+              <Input
+                size="large"
+                placeholder="0123456789"
+                prefix={<FileTextOutlined className="input-icon" />}
+                className="form-input"
+              />
+            </Form.Item>
+          </>
+        )}
 
-        <div className="input-group">
-          <Input.Password
-            size="large"
-            placeholder="Nhập lại mật khẩu"
-            prefix={<LockOutlined />}
-            name="confirmPassword"
-            className="form-input"
-            onChange={handleChange}
-          />
-        </div>
-
-        <div style={{ marginBottom: 24, textAlign: 'left' }}>
-          <Checkbox name="agreement" onChange={handleChange}>
-            Tôi đồng ý với <a href="#" style={{ color: '#10b981', fontWeight: 500 }}>Điều khoản & Chính sách</a>
-          </Checkbox>
-        </div>
-
-        <Button
-          type="primary"
-          size="large"
-          block
-          loading={loading}
-          onClick={handleRegister}
-          className="login-button"
+        {/* Email */}
+        <Form.Item
+          name="email"
+          label={<span className="input-label-upper">EMAIL</span>}
+          rules={emailRules}
         >
-          Đăng ký tài khoản
-        </Button>
+          <Input
+            size="large"
+            placeholder="example@email.com"
+            prefix={<MailOutlined className="input-icon" />}
+            className="form-input"
+          />
+        </Form.Item>
 
-        <div className="signup-link">
-          <span>Đã có tài khoản? </span>
-          <Link to="/login" className="signup-text">Đăng nhập ngay</Link>
+        {/* Password */}
+        <Form.Item
+          name="password"
+          label={<span className="input-label-upper">MẬT KHẨU</span>}
+          rules={passwordRules}
+        >
+          <Input.Password
+            size="large"
+            placeholder="••••••••"
+            prefix={<LockOutlined className="input-icon" />}
+            className="form-input"
+          />
+        </Form.Item>
+
+        {/* Confirm Password */}
+        <Form.Item
+          name="confirmPassword"
+          label={<span className="input-label-upper">XÁC NHẬN MẬT KHẨU</span>}
+          rules={confirmPasswordRules}
+        >
+          <Input.Password
+            size="large"
+            placeholder="••••••••"
+            prefix={<LockOutlined className="input-icon" />}
+            className="form-input"
+          />
+        </Form.Item>
+
+        {/* Agreement Checkbox */}
+        <Form.Item
+          name="agreement"
+          valuePropName="checked"
+          rules={agreementRules}
+          className="agreement-item"
+        >
+          <Checkbox className="agreement-checkbox">
+            <span className="agreement-text">
+              {isPersonal
+                ? "Bằng cách đăng ký, tôi đồng ý với "
+                : "Tôi đồng ý với "}
+              <a href="#" className="agreement-link">
+                Điều khoản dịch vụ
+              </a>{" "}
+              và{" "}
+              <a href="#" className="agreement-link">
+                Chính sách quyền riêng tư
+              </a>
+              {isPersonal && " của TemplateStation."}
+            </span>
+          </Checkbox>
+        </Form.Item>
+
+        {/* Submit Button */}
+        <Form.Item>
+          <Button
+            type="primary"
+            size="large"
+            block
+            htmlType="submit"
+            loading={loading}
+            className="register-button"
+          >
+            {isPersonal ? "Đăng ký Cá nhân" : "Đăng ký Doanh nghiệp"}
+          </Button>
+        </Form.Item>
+
+        {/* Login Link */}
+        <div className="login-link">
+          <span>Bạn đã có tài khoản? </span>
+          <Link to="/login" className="login-link-text">
+            Đăng nhập ngay <span className="arrow">→</span>
+          </Link>
         </div>
-
-        <Divider className="divider">
-          <span className="divider-text">HOẶC ĐĂNG KÝ VỚI</span>
-        </Divider>
-
-        <div className="social-login">
-          <Button icon={<GoogleOutlined />} className="social-button google" />
-          <Button icon={<FacebookOutlined />} className="social-button facebook" />
-          <Button icon={<GithubOutlined />} className="social-button github" />
-        </div>
-      </div>
+      </Form>
     </div>
-  )
-}
+  );
+};
 
-export default RegisterForm
+export default RegisterForm;

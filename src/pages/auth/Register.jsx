@@ -1,13 +1,13 @@
-import React from 'react'
-import AuthLayout from '../../layouts/AuthLayout'        
-import RegisterForm from '../../components/auth/RegisterForm' 
+import React from "react";
+import AuthLayout from "../../layouts/AuthLayout";
+import RegisterForm from "../../components/auth/RegisterForm";
 
 const Register = () => {
   return (
-    <AuthLayout>      
-      <RegisterForm /> 
-    </AuthLayout>    
-  )
-}   
+    <AuthLayout variant="register">
+      <RegisterForm />
+    </AuthLayout>
+  );
+};
 
-export default Register
+export default Register;
