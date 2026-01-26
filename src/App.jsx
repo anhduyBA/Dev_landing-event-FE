@@ -1,16 +1,8 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Login from './pages/auth/Login'
-import Register from './pages/auth/Register'
+import React from "react";
+import AppRoutes from "./routes";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-    </Routes>
-  )
+  return <AppRoutes />;
 }
 
-export default App
+export default App;
