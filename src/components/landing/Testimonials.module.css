@@ -1,0 +1,210 @@
+.testimonials {
+  padding: 6rem 2rem;
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.75rem 0;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.navBtn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #e2e8f0;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+}
+
+.navBtn:hover {
+  background: #14b8a6;
+  border-color: #14b8a6;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+
+.card.active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+
+.stars {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.2rem;
+  color: #14b8a6;
+}
+
+.text {
+  color: #475569;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.avatar {
+  font-size: 1.75rem;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  border-radius: 50%;
+}
+
+.avatarInitial {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f9f8;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #14b8a6;
+  flex-shrink: 0;
+}
+
+.name {
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.role {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0.25rem 0 0 0;
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 3rem 1.5rem;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .controls {
+    align-self: flex-end;
+    gap: 0.5rem;
+  }
+
+  .navBtn {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .card.active {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .stars {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .author {
+    gap: 0.5rem;
+  }
+
+  .avatarInitial {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
+  }
+
+  .name {
+    font-size: 0.85rem;
+  }
+
+  .role {
+    font-size: 0.7rem;
+  }
+}
