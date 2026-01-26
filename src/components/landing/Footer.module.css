@@ -1,0 +1,293 @@
+.footer {
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 6rem 2rem 2rem;
+  margin-top: 6rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: 4rem;
+  margin-bottom: 3rem;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #14b8a6, #06b6d4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+}
+
+.logoText {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin-bottom: 1.5rem;
+}
+
+.social {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLink {
+  width: 44px;
+  height: 44px;
+  border-radius: 0.75rem;
+  background: rgba(20, 184, 166, 0.1);
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #14b8a6;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.socialLink svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
+.socialLink:hover {
+  background: rgba(20, 184, 166, 0.2);
+  border-color: rgba(20, 184, 166, 0.5);
+}
+
+.columnTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #f8fafc;
+}
+
+.columnDesc {
+  font-size: 14px;
+  color: #cbd5e1;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.links a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: #14b8a6;
+}
+
+.newsletter {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.newsletter input {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(20, 184, 166, 0.3);
+  border-radius: 0.5rem;
+  background: rgba(20, 184, 166, 0.05);
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.newsletter input::placeholder {
+  color: #94a3b8;
+}
+
+.newsletter input:focus {
+  outline: none;
+  border-color: #14b8a6;
+  background: rgba(20, 184, 166, 0.1);
+}
+
+.subscribeBtn {
+  padding: 0.75rem 1rem;
+  background: #14b8a6;
+  color: #0f172a;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.subscribeBtn:hover {
+  background: #0d9488;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(20, 184, 166, 0.2);
+  margin: 3rem 0;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.footerLinks a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: #14b8a6;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 1.5rem 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .logo {
+    margin-bottom: 0.5rem;
+  }
+
+  .logoIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+
+  .logoText {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .social {
+    gap: 0.75rem;
+  }
+
+  .socialLink {
+    width: 40px;
+    height: 40px;
+  }
+
+  .socialLink svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .columnTitle {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .columnDesc {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .links {
+    gap: 0.5rem;
+  }
+
+  .links a {
+    font-size: 0.85rem;
+  }
+
+  .newsletter {
+    gap: 0.5rem;
+  }
+
+  .newsletter input,
+  .subscribeBtn {
+    font-size: 0.85rem;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .divider {
+    margin: 2rem 0;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .copyright {
+    font-size: 0.75rem;
+  }
+
+  .footerLinks {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .footerLinks a {
+    font-size: 0.7rem;
+  }
+}

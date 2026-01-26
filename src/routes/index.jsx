@@ -10,6 +10,9 @@ const ManagerLayout = lazy(() => import("../layouts/ManagerLayout"));
 const Login = lazy(() => import("../pages/auth/Login"));
 const Register = lazy(() => import("../pages/auth/Register"));
 
+// Lazy load landing page
+const Landing = lazy(() => import("../pages/landing/Landing"));
+
 // Lazy load manager pages
 const BusinessDashboard = lazy(
   () => import("../pages/manager/BusinessDashboard"),
@@ -36,12 +39,12 @@ const AppRoutes = () => {
     <Suspense fallback={<PageLoader />}>
       <Routes>
         {/* ============================================
-            PUBLIC ROUTES (Auth)
+            PUBLIC ROUTES
             ============================================ */}
-        <Route
-          path={ROUTES.HOME}
-          element={<Navigate to={ROUTES.AUTH.LOGIN} replace />}
-        />
+        {/* Landing Page - Trang chủ */}
+        <Route path={ROUTES.HOME} element={<Landing />} />
+
+        {/* Auth Routes */}
         <Route path={ROUTES.AUTH.LOGIN} element={<Login />} />
         <Route path={ROUTES.AUTH.REGISTER} element={<Register />} />
 
