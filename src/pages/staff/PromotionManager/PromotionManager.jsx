@@ -34,7 +34,7 @@ const PromotionManager = () => {
 
   return (
     <Card 
-      title="Chương Trình Khuyến Mãi" 
+      title="Chương trình khuyến mãi" 
       extra={<Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalVisible(true)}>Tạo Mã Mới</Button>}
     >
       <Table columns={columns} dataSource={promotions} rowKey="id" />

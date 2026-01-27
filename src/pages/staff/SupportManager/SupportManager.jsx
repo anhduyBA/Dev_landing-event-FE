@@ -41,7 +41,7 @@ const SupportManager = () => {
     <Card title="Yêu Cầu Hỗ Trợ">
       <Table columns={columns} dataSource={tickets} rowKey="id" />
 
-      {/* MODAL PHẢN HỒI (CHAT) */}
+      {/* MODAL trả lời lại khách hàng */}
       <Modal 
         title={`Hỗ trợ: ${currentTicket?.issue} (${currentTicket?.customer})`} 
         open={isChatVisible} 

@@ -12,7 +12,7 @@ const CustomerManager = () => {
     { id: 2, name: 'Trần Thị B', email: 'thib@gmail.com', phone: '0912345678', totalSpent: 500000, rank: 'Silver' },
   ];
 
-  // Mock Data Lịch sử mua hàng
+  // Mock Data lịch sử mua hàng
   const purchaseHistory = [
     { id: 'ORD001', date: '2025-01-15', template: 'Landing Event Pro', amount: 500000 },
     { id: 'ORD005', date: '2025-02-10', template: 'Beauty Shop Theme', amount: 750000 },
@@ -62,10 +62,10 @@ const CustomerManager = () => {
   ];
 
   return (
-    <Card title="Danh Sách Khách Hàng">
+    <Card title="Danh Sách Khách hàng">
       <Table columns={columns} dataSource={customers} rowKey="id" />
 
-      {/* MODAL LỊCH SỬ MUA HÀNG */}
+      {/* MODAL lịch sử mua hàng*/}
       <Modal 
         title={`Lịch sử mua hàng - ${selectedCustomer?.name}`} 
         open={isHistoryVisible} 

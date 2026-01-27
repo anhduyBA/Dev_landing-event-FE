@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { AppstoreOutlined } from '@ant-design/icons';
 import { 
   Table, Card, Button, Tabs, Tag, Space, 
   Modal, Form, Input, InputNumber, Select, Upload, message 
@@ -15,14 +16,14 @@ const TemplateManager = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [form] = Form.useForm();
 
-  // --- DỮ LIỆU GIẢ LẬP (MOCK DATA) ---
+  //  mock data template
   const initialData = [
     { id: 1, name: 'Landing Event Pro', category: 'Sự kiện', price: 500000, status: 'Active' },
     { id: 2, name: 'Beauty Shop Theme', category: 'Mỹ phẩm', price: 750000, status: 'Pending' },
     { id: 3, name: 'Game Marketing', category: 'Game', price: 600000, status: 'Active' },
   ];
 
-  // --- CỘT BẢNG (TABLE COLUMNS) ---
+  // Cột bảng Template
   const columns = [
     { title: 'ID', dataIndex: 'id', key: 'id', width: 70 },
     { 
@@ -60,7 +61,7 @@ const TemplateManager = () => {
     },
   ];
 
-  // --- XỬ LÝ FORM ---
+  // Xử lý thêm template 
   const handleAddTemplate = () => {
     setIsModalVisible(true);
   };
@@ -78,7 +79,7 @@ const TemplateManager = () => {
     <div className="template-manager">
       <Tabs defaultActiveKey="1" type="card">
         
-        {/* TAB 1: DANH SÁCH TEMPLATE */}
+        {/* TAB 1: danh sách TEMPLATE */}
         <TabPane tab={<span><AppstoreOutlined /> Danh sách Template</span>} key="1">
           <Card 
             title="Kho Giao Diện" 
@@ -119,7 +120,7 @@ const TemplateManager = () => {
         </TabPane>
       </Tabs>
 
-      {/* MODAL THÊM/SỬA TEMPLATE */}
+      {/* thêm/sửa TEMPLATE */}
       <Modal 
         title="Thêm Template Mới" 
         open={isModalVisible} 
@@ -160,7 +161,6 @@ const TemplateManager = () => {
   );
 };
 
-// Icon component (import bổ sung nếu thiếu ở trên)
-import { AppstoreOutlined } from '@ant-design/icons';
+
 
 export default TemplateManager;
