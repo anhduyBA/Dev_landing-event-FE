@@ -1,0 +1,328 @@
+/* ======================================
+   STAFF PAGES COMMON STYLES
+   Responsive styles for all Staff pages
+   ====================================== */
+
+/* Page Header */
+.staff-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.staff-page-header .header-info h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.staff-page-header .header-info p {
+  margin: 4px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.staff-page-header .header-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Filter Section */
+.staff-filter-section {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.staff-filter-section .search-input {
+  flex: 1;
+  min-width: 200px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.staff-filter-section .filter-select {
+  min-width: 150px;
+}
+
+/* Stats Cards */
+.staff-stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.staff-stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.staff-stat-card .stat-label {
+  color: #6b7280;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.staff-stat-card .stat-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Action Buttons */
+.staff-btn-primary {
+  border-radius: 8px;
+  height: 40px;
+  background: #10b981;
+  border-color: #10b981;
+}
+
+.staff-btn-primary:hover {
+  background: #059669 !important;
+  border-color: #059669 !important;
+}
+
+.staff-btn-secondary {
+  border-radius: 8px;
+  height: 40px;
+}
+
+/* ======================================
+   RESPONSIVE BREAKPOINTS
+   ====================================== */
+
+/* Tablet Landscape (1024px) */
+@media (max-width: 1024px) {
+  .staff-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .staff-page-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .staff-page-header .header-actions {
+    justify-content: flex-start;
+  }
+}
+
+/* Tablet Portrait (768px) */
+@media (max-width: 768px) {
+  .staff-page-header .header-info h2 {
+    font-size: 18px;
+  }
+  
+  .staff-page-header .header-info p {
+    font-size: 13px;
+  }
+  
+  .staff-filter-section {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  
+  .staff-filter-section .search-input {
+    min-width: 100%;
+    height: 38px;
+  }
+  
+  .staff-filter-section .filter-select {
+    min-width: calc(50% - 4px);
+    flex: 1;
+  }
+  
+  .staff-btn-primary,
+  .staff-btn-secondary {
+    height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+  
+  .staff-stat-card {
+    padding: 16px;
+  }
+  
+  .staff-stat-card .stat-value {
+    font-size: 24px;
+  }
+}
+
+/* Large Phone (576px) */
+@media (max-width: 576px) {
+  .staff-page-header {
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+  
+  .staff-page-header .header-info h2 {
+    font-size: 16px;
+  }
+  
+  .staff-page-header .header-info p {
+    font-size: 12px;
+  }
+  
+  .staff-page-header .header-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .staff-page-header .header-actions .ant-btn {
+    width: 100%;
+  }
+  
+  .staff-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  
+  .staff-stat-card {
+    padding: 12px;
+    border-radius: 8px;
+  }
+  
+  .staff-stat-card .stat-label {
+    font-size: 12px;
+  }
+  
+  .staff-stat-card .stat-value {
+    font-size: 20px;
+  }
+  
+  .staff-filter-section .search-input,
+  .staff-filter-section .filter-select {
+    height: 36px;
+  }
+  
+  .staff-btn-primary,
+  .staff-btn-secondary {
+    height: 36px;
+    font-size: 12px;
+  }
+}
+
+/* Small Phone (480px) */
+@media (max-width: 480px) {
+  .staff-page-header .header-info h2 {
+    font-size: 15px;
+  }
+  
+  .staff-stats-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+  
+  .staff-stat-card {
+    padding: 10px;
+  }
+  
+  .staff-stat-card .stat-label {
+    font-size: 11px;
+  }
+  
+  .staff-stat-card .stat-value {
+    font-size: 18px;
+  }
+  
+  .staff-filter-section .filter-select {
+    min-width: 100%;
+  }
+}
+
+/* Very Small Phone (375px) */
+@media (max-width: 375px) {
+  .staff-page-header .header-info h2 {
+    font-size: 14px;
+  }
+  
+  .staff-stat-card .stat-value {
+    font-size: 16px;
+  }
+  
+  .staff-btn-primary,
+  .staff-btn-secondary {
+    font-size: 11px;
+    padding: 0 8px;
+  }
+}
+
+/* ======================================
+   TOUCH-FRIENDLY IMPROVEMENTS
+   ====================================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets for mobile */
+  .ant-btn {
+    min-height: 44px;
+  }
+  
+  .ant-input {
+    min-height: 44px;
+  }
+  
+  .ant-select-selector {
+    min-height: 44px !important;
+  }
+  
+  .ant-table-tbody > tr > td {
+    padding: 12px 8px !important;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .ant-table-tbody > tr:hover > td {
+    background: transparent !important;
+  }
+}
+
+/* ======================================
+   LANDSCAPE MOBILE OPTIMIZATION
+   ====================================== */
+@media (max-height: 500px) and (orientation: landscape) {
+  .staff-header {
+    height: 48px !important;
+  }
+  
+  .staff-content {
+    padding: 8px 16px;
+  }
+  
+  .staff-page-header {
+    margin-bottom: 12px;
+  }
+  
+  .staff-filter-section {
+    margin-bottom: 12px;
+  }
+}
+
+/* ======================================
+   PRINT STYLES
+   ====================================== */
+@media print {
+  .staff-sider,
+  .staff-header,
+  .mobile-drawer {
+    display: none !important;
+  }
+  
+  .staff-main {
+    margin-left: 0 !important;
+  }
+  
+  .staff-content {
+    padding: 0 !important;
+  }
+  
+  .ant-btn {
+    display: none !important;
+  }
+}

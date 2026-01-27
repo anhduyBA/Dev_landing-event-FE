@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import styles from './Header.module.css'
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { ThunderboltOutlined } from "@ant-design/icons";
+import styles from "./Header.module.css";
 
 function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <div className={styles.logoIcon}>T</div>
+          <div className={styles.logoIcon}>
+            <ThunderboltOutlined />
+          </div>
           <span className={styles.logoText}>TemplateStation</span>
         </div>
 

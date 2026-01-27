@@ -1,40 +1,17 @@
-import React from 'react'
-import styles from './ProductShowcase.module.css'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import TemplateCard from "../common/TemplateCard";
+import { templatesData } from "../../mock/landing";
+import styles from "./ProductShowcase.module.css";
 
 function ProductShowcase() {
-  const products = [
-    {
-      id: 1,
-      category: 'SAAS & STARTUPS',
-      rating: '4.9',
-      title: 'Nexus SaaS Launch Kit',
-      description: 'Hệ sinh hoàn chỉnh cho sản phẩm nhằm hỗ trợ phần mềm phần tương thích dark mode.',
-      tags: ['REACT', 'TAILWIND'],
-      price: '$49',
-      bgColor: '#e8d0c4'
-    },
-    {
-      id: 2,
-      category: 'DIGITAL PRODUCTS',
-      rating: '5',
-      title: 'Minimal E-Book Sales',
-      description: 'Layout sạch để tập trung được trách chuyên đổi ấy rồi.',
-      tags: ['HTML5', 'CSS3'],
-      price: '$29',
-      bgColor: '#d4c9b9',
-      badge: 'BESTSELLER'
-    },
-    {
-      id: 3,
-      category: 'EVENTS',
-      rating: '4.8',
-      title: 'Summit Event Page',
-      description: 'Hội thảo để tạo chủ đề ngành cách gợi cảm được lên giả cụ thể.',
-      tags: ['VUE.JS'],
-      price: '$39',
-      bgColor: '#dcc9bb'
-    }
-  ]
+  const navigate = useNavigate();
+
+  const handleViewDetails = (id) => {
+    // TODO: Navigate to template detail page
+    console.log("View template:", id);
+    // navigate(`/templates/${id}`);
+  };
 
   return (
     <section className={styles.showcase} id="products">
@@ -43,46 +20,36 @@ function ProductShowcase() {
           <div>
             <h2 className={styles.title}>Template Cao Cấp</h2>
             <p className={styles.subtitle}>
-              Các landing page được chế tạo để tạo, tối ưu hóa cho mục sơ
-              chuyên độ người dùng là đó.
+              Các landing page được chế tác tỉ mỉ, tối ưu hóa cho chuyển đổi và
+              trải nghiệm người dùng tốt nhất.
             </p>
           </div>
-          <a href="#" className={styles.viewMore}>Khám Phá Toàn Bộ →</a>
+          <a href="#" className={styles.viewMore}>
+            Khám Phá Toàn Bộ →
+          </a>
         </div>
 
         <div className={styles.grid}>
-          {products.map((product) => (
-            <div key={product.id} className={styles.card}>
-              <div className={styles.cardImage} style={{ backgroundColor: product.bgColor }}>
-                {product.badge && <div className={styles.badge}>{product.badge}</div>}
-                <div className={styles.rating}>⭐ {product.rating}</div>
-              </div>
-              
-              <div className={styles.cardContent}>
-                <div className={styles.categoryTag}>{product.category}</div>
-                <h3 className={styles.productTitle}>{product.title}</h3>
-                <p className={styles.description}>{product.description}</p>
-
-                <div className={styles.tags}>
-                  {product.tags.map((tag, idx) => (
-                    <span key={idx} className={styles.tag}>{tag}</span>
-                  ))}
-                </div>
-
-                <div className={styles.footer}>
-                  <div>
-                    <p className={styles.priceLabel}>GIÁ BÁN</p>
-                    <p className={styles.price}>{product.price}</p>
-                  </div>
-                  <button className={styles.btn}>Chi Tiết →</button>
-                </div>
-              </div>
-            </div>
+          {templatesData.map((template) => (
+            <TemplateCard
+              key={template.id}
+              id={template.id}
+              category={template.category}
+              rating={template.rating}
+              title={template.title}
+              description={template.description}
+              tags={template.tags}
+              price={template.price}
+              bgColor={template.bgColor}
+              badge={template.badge}
+              image={template.image}
+              onViewDetails={handleViewDetails}
+            />
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default ProductShowcase
+export default ProductShowcase;

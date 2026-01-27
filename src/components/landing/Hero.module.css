@@ -1,6 +1,10 @@
+/* ======================================
+   HERO SECTION STYLES
+   ====================================== */
+
 .hero {
-  background: linear-gradient(135deg, #ffffff 0%, #f0f9f8 100%);
-  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f0fdf9 100%);
+  padding: 80px 24px;
   min-height: 600px;
   display: flex;
   align-items: center;
@@ -11,218 +15,382 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 60px;
   align-items: center;
 }
+
+/* ======================================
+   LEFT CONTENT
+   ====================================== */
 
 .content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 24px;
 }
 
+/* Badge */
 .badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.85rem;
+  gap: 8px;
+  font-size: 12px;
   font-weight: 600;
-  color: #14b8a6;
+  color: #10b981;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  background: rgba(20, 184, 166, 0.1);
-  padding: 0.5rem 1rem;
-  border-radius: 2rem;
+  background: rgba(16, 185, 129, 0.1);
+  padding: 8px 16px;
+  border-radius: 24px;
   width: fit-content;
 }
 
+.badgeDot {
+  color: #10b981;
+  font-size: 8px;
+}
+
+/* Title */
 .title {
-  font-size: 3.5rem;
+  font-size: 56px;
   font-weight: 700;
   color: #0f172a;
-  line-height: 1.2;
+  line-height: 1.1;
   margin: 0;
+  letter-spacing: -1px;
 }
 
 .highlight {
-  color: #14b8a6;
+  color: #10b981;
+  font-style: italic;
 }
 
+/* Subtitle */
 .subtitle {
-  font-size: 1rem;
+  font-size: 16px;
   color: #64748b;
-  line-height: 1.8;
+  line-height: 1.7;
   margin: 0;
+  max-width: 480px;
 }
 
+/* Buttons */
 .buttons {
   display: flex;
-  gap: 1rem;
+  gap: 12px;
   flex-wrap: wrap;
-}
-
-.primaryBtn,
-.secondaryBtn {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  display: inline-block;
+  margin-top: 8px;
 }
 
 .primaryBtn {
-  background: #0f172a;
-  color: white;
-  border-radius: 0.75rem;
+  background: #0f172a !important;
+  border-color: #0f172a !important;
+  border-radius: 12px !important;
+  height: 48px !important;
+  padding: 0 28px !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
 }
 
 .primaryBtn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 30px rgba(15, 23, 42, 0.3);
+  background: #1e293b !important;
+  border-color: #1e293b !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.25);
 }
 
 .secondaryBtn {
-  background: transparent;
-  color: #0f172a;
-  border: none;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  height: 48px !important;
 }
 
 .secondaryBtn:hover {
-  color: #14b8a6;
+  color: #10b981 !important;
 }
 
+/* Stats */
 .stats {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.avatars {
-  display: flex;
-  align-items: center;
-  gap: -0.5rem;
-}
-
-.avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #e2e8f0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #64748b;
-  border: 2px solid white;
-  margin-left: -12px;
-}
-
-.avatar:first-child {
-  margin-left: 0;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .stats p {
   color: #64748b;
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 14px;
 }
 
-.image {
+/* ======================================
+   RIGHT IMAGE SECTION
+   ====================================== */
+
+.imageSection {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.imagePlaceholder {
-  width: 100%;
-  aspect-ratio: 1;
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
-  border-radius: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
   position: relative;
-  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.3);
 }
 
-.imagePlaceholder img {
+.imageContainer {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 500px;
 }
+
+/* Dashboard Preview */
+.dashboardPreview {
+  background: linear-gradient(145deg, #0f172a 0%, #1e3a5f 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 40px 80px rgba(15, 23, 42, 0.35);
+}
+
+.dashboardHeader {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.windowControls {
+  display: flex;
+  gap: 8px;
+}
+
+.controlDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.controlDot:first-child {
+  background: #ef4444;
+}
+
+.controlDot:nth-child(2) {
+  background: #fbbf24;
+}
+
+.controlDot:nth-child(3) {
+  background: #22c55e;
+}
+
+.dashboardContent {
+  padding: 24px;
+  min-height: 320px;
+}
+
+.chartArea {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 185, 129, 0.3) 0%,
+    rgba(16, 185, 129, 0) 100%
+  );
+  border-radius: 12px;
+  position: relative;
+}
+
+.chartArea::before {
+  content: "";
+  position: absolute;
+  bottom: 40%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #10b981, transparent);
+  border-radius: 2px;
+}
+
+/* Floating Card */
+.floatingCard {
+  position: absolute;
+  bottom: 40px;
+  right: -30px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  min-width: 140px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.floatingCardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.floatingLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.floatingIcon {
+  color: #10b981;
+  font-size: 16px;
+}
+
+.floatingValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: #10b981;
+}
+
+/* ======================================
+   RESPONSIVE - TABLET
+   ====================================== */
+
+@media (max-width: 992px) {
+  .container {
+    gap: 40px;
+  }
+
+  .title {
+    font-size: 44px;
+  }
+
+  .floatingCard {
+    right: -10px;
+  }
+}
+
+/* ======================================
+   RESPONSIVE - MOBILE
+   ====================================== */
 
 @media (max-width: 768px) {
   .hero {
-    padding: 3rem 1.5rem;
+    padding: 60px 20px;
     min-height: auto;
   }
 
   .container {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 48px;
   }
 
   .content {
-    gap: 1.5rem;
+    gap: 20px;
+    text-align: center;
+    align-items: center;
   }
 
   .badge {
-    font-size: 0.75rem;
-    padding: 0.4rem 0.8rem;
+    font-size: 11px;
+    padding: 6px 14px;
   }
 
   .title {
-    font-size: 1.75rem;
-    line-height: 1.3;
+    font-size: 36px;
+    line-height: 1.15;
   }
 
   .subtitle {
-    font-size: 0.9rem;
-    line-height: 1.6;
+    font-size: 15px;
+    max-width: 100%;
   }
 
   .buttons {
     flex-direction: column;
-    gap: 0.75rem;
+    width: 100%;
+    gap: 10px;
   }
 
   .primaryBtn,
   .secondaryBtn {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 0.95rem;
+    width: 100% !important;
   }
 
   .stats {
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-
-  .avatars {
-    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
   }
 
   .stats p {
-    font-size: 0.85rem;
-    margin: 0;
+    font-size: 13px;
   }
 
-  .image {
-    display: block;
+  .imageSection {
+    order: -1;
   }
 
-  .imagePlaceholder {
-    width: 100%;
-    aspect-ratio: 1;
-    border-radius: 1.5rem;
+  .imageContainer {
+    max-width: 100%;
+  }
+
+  .dashboardPreview {
+    border-radius: 16px;
+  }
+
+  .dashboardContent {
+    padding: 16px;
+    min-height: 240px;
+  }
+
+  .chartArea {
+    height: 150px;
+  }
+
+  .floatingCard {
+    bottom: 20px;
+    right: 10px;
+    padding: 12px 16px;
+    min-width: 120px;
+  }
+
+  .floatingLabel {
+    font-size: 9px;
+  }
+
+  .floatingValue {
+    font-size: 20px;
+  }
+}
+
+/* ======================================
+   RESPONSIVE - SMALL MOBILE
+   ====================================== */
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 48px 16px;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .chartArea {
+    height: 120px;
+  }
+
+  .floatingCard {
+    right: 5px;
+    bottom: 15px;
   }
 }

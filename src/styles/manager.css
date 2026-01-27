@@ -1,0 +1,456 @@
+/* ======================================
+   MANAGER LAYOUT STYLES
+   ====================================== */
+
+/* Main Layout */
+.manager-layout {
+  min-height: 100vh;
+}
+
+/* ======================================
+   SIDEBAR STYLES
+   ====================================== */
+.manager-sider {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  position: fixed !important;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.manager-sider .ant-layout-sider-children {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+}
+
+/* Sidebar Header / Logo */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.sidebar-logo .logo-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.sidebar-logo .logo-icon .anticon {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.sidebar-logo .logo-text {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.mobile-close-btn {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.mobile-close-btn:hover {
+  color: #ffffff !important;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  flex: 1;
+  padding: 16px 12px;
+  overflow-y: auto;
+}
+
+.manager-menu {
+  background: transparent !important;
+  border: none !important;
+}
+
+.manager-menu .ant-menu-item {
+  height: 48px;
+  line-height: 48px;
+  margin: 4px 0;
+  padding: 0 16px !important;
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.65) !important;
+  transition: all 0.3s ease;
+}
+
+.manager-menu .ant-menu-item:hover {
+  background: rgba(255, 255, 255, 0.06) !important;
+  color: #ffffff !important;
+}
+
+.manager-menu .ant-menu-item-selected {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #10b981 !important;
+}
+
+.manager-menu .ant-menu-item-selected::after {
+  display: none;
+}
+
+.manager-menu .ant-menu-item .anticon {
+  font-size: 18px;
+  margin-right: 12px;
+}
+
+.manager-menu .ant-menu-title-content {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Collapsed state */
+.manager-sider.ant-layout-sider-collapsed .ant-menu-item {
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+}
+
+.manager-sider.ant-layout-sider-collapsed .ant-menu-item .anticon {
+  margin-right: 0;
+}
+
+/* Sidebar Footer / User Info */
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.user-avatar {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  flex-shrink: 0;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.user-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-email {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logout-btn {
+  height: 44px;
+  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  border-radius: 10px !important;
+  color: #ef4444 !important;
+  background: transparent !important;
+  transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+  border-color: #ef4444 !important;
+}
+
+.logout-btn .anticon {
+  font-size: 16px;
+}
+
+/* Collapsed state for footer */
+.manager-sider.ant-layout-sider-collapsed .user-details {
+  display: none;
+}
+
+.manager-sider.ant-layout-sider-collapsed .user-info {
+  justify-content: center;
+}
+
+.manager-sider.ant-layout-sider-collapsed .logout-btn {
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+}
+
+/* ======================================
+   MAIN LAYOUT STYLES
+   ====================================== */
+.manager-main {
+  margin-left: 260px;
+  min-height: 100vh;
+  background: #f8fafc;
+  transition: margin-left 0.2s ease;
+}
+
+.manager-sider.ant-layout-sider-collapsed ~ .manager-main {
+  margin-left: 80px;
+}
+
+/* Header */
+.manager-header {
+  background: #ffffff !important;
+  padding: 0 24px !important;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.mobile-menu-btn {
+  display: none;
+  color: #374151 !important;
+  font-size: 18px;
+}
+
+.page-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.notification-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6b7280 !important;
+  background: #f3f4f6 !important;
+  transition: all 0.3s ease;
+}
+
+.notification-btn:hover {
+  background: #e5e7eb !important;
+  color: #1f2937 !important;
+}
+
+.notification-btn .anticon {
+  font-size: 18px;
+}
+
+/* Content */
+.manager-content {
+  padding: 24px;
+  min-height: calc(100vh - 64px);
+}
+
+/* ======================================
+   MOBILE DRAWER
+   ====================================== */
+.mobile-drawer .ant-drawer-body {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  padding: 0;
+}
+
+.mobile-drawer .sidebar-wrapper {
+  height: 100%;
+}
+
+/* Desktop Sider Hidden on Mobile */
+.desktop-sider {
+  display: block;
+}
+
+/* ======================================
+   LOADING & 404 STYLES
+   ====================================== */
+.page-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfeff 50%, #f0f9ff 100%);
+}
+
+.page-loader .ant-spin {
+  color: #10b981;
+}
+
+.page-loader .ant-spin-text {
+  color: #6b7280;
+  margin-top: 12px;
+}
+
+.auth-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfeff 50%, #f0f9ff 100%);
+}
+
+.not-found-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfeff 50%, #f0f9ff 100%);
+  padding: 20px;
+}
+
+.not-found-page .ant-result-title {
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.not-found-page .ant-result-subtitle {
+  color: #6b7280;
+}
+
+.not-found-page .home-btn {
+  height: 44px;
+  padding: 0 24px;
+  border-radius: 22px;
+  font-weight: 600;
+  background: #10b981;
+  border-color: #10b981;
+}
+
+.not-found-page .home-btn:hover {
+  background: #059669;
+  border-color: #059669;
+}
+
+/* ======================================
+   RESPONSIVE STYLES
+   ====================================== */
+
+/* Tablet Landscape */
+@media (max-width: 1024px) {
+  .manager-content {
+    padding: 20px;
+  }
+}
+
+/* Tablet Portrait */
+@media (max-width: 992px) {
+  .desktop-sider {
+    display: none !important;
+  }
+
+  .manager-main {
+    margin-left: 0 !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+
+  .manager-header {
+    padding: 0 16px !important;
+  }
+
+  .manager-content {
+    padding: 16px;
+  }
+}
+
+/* Large Phone */
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 16px;
+  }
+
+  .manager-header {
+    height: 56px !important;
+  }
+
+  .notification-btn {
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
+
+/* Small Phone */
+@media (max-width: 576px) {
+  .page-title {
+    font-size: 14px;
+  }
+
+  .manager-content {
+    padding: 12px;
+  }
+
+  .manager-header {
+    height: 52px !important;
+  }
+}
+
+/* Very Small Phone */
+@media (max-width: 375px) {
+  .page-title {
+    font-size: 13px;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .manager-content {
+    padding: 10px;
+  }
+
+  .sidebar-logo .logo-text {
+    font-size: 16px;
+  }
+}
