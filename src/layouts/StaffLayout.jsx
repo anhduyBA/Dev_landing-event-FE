@@ -3,9 +3,10 @@ import { Layout, Menu, Avatar, Button, Badge, Drawer } from "antd";
 import {
   ThunderboltOutlined,
   AppstoreOutlined,
-  TeamOutlined,
-  InboxOutlined,
-  SettingOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+  GiftOutlined,
+  CustomerServiceOutlined,
   LogoutOutlined,
   BellOutlined,
   MenuOutlined,
@@ -14,10 +15,12 @@ import {
 import { Link, useLocation, useNavigate, Outlet } from "react-router-dom";
 import { ROUTES, ROUTE_TITLES } from "../routes/routes";
 import { useAuth } from "../hooks/useAuth.jsx";
+import "../styles/staff.css";
+import "../styles/staff-pages.css";
 
 const { Sider, Header, Content } = Layout;
 
-const ManagerLayout = () => {
+const StaffLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { logout } = useAuth();
@@ -27,24 +30,29 @@ const ManagerLayout = () => {
   // Menu items configuration
   const menuItems = [
     {
-      key: ROUTES.MANAGER.DASHBOARD,
+      key: ROUTES.STAFF.TEMPLATES,
       icon: <AppstoreOutlined />,
-      label: ROUTE_TITLES[ROUTES.MANAGER.DASHBOARD],
+      label: ROUTE_TITLES[ROUTES.STAFF.TEMPLATES] || "Quản lý Template",
     },
     {
-      key: ROUTES.MANAGER.STAFF,
-      icon: <TeamOutlined />,
-      label: ROUTE_TITLES[ROUTES.MANAGER.STAFF],
+      key: ROUTES.STAFF.ORDERS,
+      icon: <ShoppingCartOutlined />,
+      label: ROUTE_TITLES[ROUTES.STAFF.ORDERS] || "Quản lý Đơn hàng",
     },
     {
-      key: ROUTES.MANAGER.INVENTORY,
-      icon: <InboxOutlined />,
-      label: ROUTE_TITLES[ROUTES.MANAGER.INVENTORY],
+      key: ROUTES.STAFF.CUSTOMERS,
+      icon: <UserOutlined />,
+      label: ROUTE_TITLES[ROUTES.STAFF.CUSTOMERS] || "Quản lý Khách hàng",
     },
     {
-      key: ROUTES.MANAGER.SETTINGS,
-      icon: <SettingOutlined />,
-      label: ROUTE_TITLES[ROUTES.MANAGER.SETTINGS],
+      key: ROUTES.STAFF.PROMOTIONS,
+      icon: <GiftOutlined />,
+      label: ROUTE_TITLES[ROUTES.STAFF.PROMOTIONS] || "Quản lý Khuyến mãi",
+    },
+    {
+      key: ROUTES.STAFF.SUPPORT,
+      icon: <CustomerServiceOutlined />,
+      label: ROUTE_TITLES[ROUTES.STAFF.SUPPORT] || "Hỗ trợ Khách hàng",
     },
   ];
 
@@ -53,7 +61,7 @@ const ManagerLayout = () => {
     const currentItem = menuItems.find(
       (item) => item.key === location.pathname,
     );
-    return currentItem?.label || ROUTE_TITLES[ROUTES.MANAGER.DASHBOARD];
+    return currentItem?.label || "Staff Portal";
   };
 
   // Handle menu click
@@ -73,13 +81,11 @@ const ManagerLayout = () => {
     <div className="sidebar-wrapper">
       {/* Logo Section */}
       <div className="sidebar-header">
-        <Link to={ROUTES.MANAGER.DASHBOARD} className="sidebar-logo">
+        <Link to={ROUTES.STAFF.TEMPLATES} className="sidebar-logo">
           <div className="logo-icon">
             <ThunderboltOutlined />
           </div>
-          {(!collapsed || isMobile) && (
-            <span className="logo-text">Manager</span>
-          )}
+          {(!collapsed || isMobile) && <span className="logo-text">Staff</span>}
         </Link>
         {isMobile && (
           <Button
@@ -98,7 +104,7 @@ const ManagerLayout = () => {
           selectedKeys={[location.pathname]}
           items={menuItems}
           onClick={handleMenuClick}
-          className="manager-menu"
+          className="staff-menu"
         />
       </div>
 
@@ -106,12 +112,12 @@ const ManagerLayout = () => {
       <div className="sidebar-footer">
         <div className="user-info">
           <Avatar size={40} className="user-avatar">
-            {collapsed && !isMobile ? "M" : "M"}
+            {collapsed && !isMobile ? "S" : "S"}
           </Avatar>
           {(!collapsed || isMobile) && (
             <div className="user-details">
-              <span className="user-name">Manager 001</span>
-              <span className="user-email">manager@gmail.com</span>
+              <span className="user-name">Staff 001</span>
+              <span className="user-email">staff@gmail.com</span>
             </div>
           )}
         </div>
@@ -129,7 +135,7 @@ const ManagerLayout = () => {
   );
 
   return (
-    <Layout className="manager-layout">
+    <Layout className="staff-layout">
       {/* Desktop Sidebar */}
       <Sider
         collapsible
@@ -137,7 +143,7 @@ const ManagerLayout = () => {
         onCollapse={setCollapsed}
         width={260}
         collapsedWidth={80}
-        className="manager-sider desktop-sider"
+        className="staff-sider desktop-sider"
         trigger={null}
       >
         <SidebarContent />
@@ -157,9 +163,9 @@ const ManagerLayout = () => {
       </Drawer>
 
       {/* Main Layout */}
-      <Layout className="manager-main">
+      <Layout className="staff-main">
         {/* Header */}
-        <Header className="manager-header">
+        <Header className="staff-header">
           <div className="header-left">
             <Button
               type="text"
@@ -181,7 +187,7 @@ const ManagerLayout = () => {
         </Header>
 
         {/* Content */}
-        <Content className="manager-content">
+        <Content className="staff-content">
           <Outlet />
         </Content>
       </Layout>
@@ -189,4 +195,4 @@ const ManagerLayout = () => {
   );
 };
 
-export default ManagerLayout;
+export default StaffLayout;

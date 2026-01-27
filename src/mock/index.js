@@ -6,3 +6,6 @@
 
 // Manager mock data
 export * from "./manager";
+
+// Staff mock data
+export * from "./staff";

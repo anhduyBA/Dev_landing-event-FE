@@ -5,6 +5,7 @@ import { ROUTES } from "./routes";
 
 // Lazy load layouts
 const ManagerLayout = lazy(() => import("../layouts/ManagerLayout"));
+const StaffLayout = lazy(() => import("../layouts/StaffLayout"));
 
 // Lazy load auth pages
 const Login = lazy(() => import("../pages/auth/Login"));
@@ -22,6 +23,13 @@ const InventoryManagement = lazy(
   () => import("../pages/manager/InventoryManagement"),
 );
 const SystemSettings = lazy(() => import("../pages/manager/SystemSettings"));
+
+// Lazy load staff pages
+const TemplateManager = lazy(() => import("../pages/staff/TemplateManager"));
+const OrderManager = lazy(() => import("../pages/staff/OrderManager"));
+const CustomerManager = lazy(() => import("../pages/staff/CustomerManager"));
+const PromotionManager = lazy(() => import("../pages/staff/PromotionManager"));
+const SupportManager = lazy(() => import("../pages/staff/SupportManager"));
 
 // Lazy load common pages
 const NotFound = lazy(() => import("../pages/NotFound"));
@@ -61,13 +69,17 @@ const AppRoutes = () => {
         </Route>
 
         {/* ============================================
-            STAFF ROUTES - Future
+            STAFF ROUTES (No auth required for development)
+            TODO: Add PrivateRoute wrapper when connecting to API
             ============================================ */}
-        {/* 
         <Route path={ROUTES.STAFF.ROOT} element={<StaffLayout />}>
-          <Route index element={<StaffDashboard />} />
+          <Route index element={<Navigate to="templates" replace />} />
+          <Route path="templates" element={<TemplateManager />} />
+          <Route path="orders" element={<OrderManager />} />
+          <Route path="customers" element={<CustomerManager />} />
+          <Route path="promotions" element={<PromotionManager />} />
+          <Route path="support" element={<SupportManager />} />
         </Route>
-        */}
 
         {/* ============================================
             404 NOT FOUND
